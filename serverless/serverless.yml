@@ -24,6 +24,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
+  region: ap-northeast-2
 
 # you can overwrite defaults here
 #  stage: dev
@@ -60,10 +61,13 @@ provider:
 functions:
   hello:
     handler: handler.hello
+    description: "HTTP API 요청"
     events:
+      # https://[API_GW_URL]/hello URL 호출시 실행한다.
       - http:
-        path: /
-        method: ANY
+          path: hello
+          method: ANY
+    
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
