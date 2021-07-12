@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "mysql2": "^2.2.5",
+    "mysql": "^2.18.1",
     "serverless-sequelize-migrations": "^1.1.1"
   }
 }
