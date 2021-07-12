@@ -15,7 +15,9 @@ service: serverless-nodejs-sequelize
 # app and org for use with dashboard.serverless.com
 #app: your-app-name
 #org: your-org-name
-
+useDotenv: true
+plugins:
+    - serverless-sequelize-migrations
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
 frameworkVersion: '2'
@@ -24,6 +26,13 @@ provider:
   name: aws
   runtime: nodejs12.x
   lambdaHashingVersion: 20201221
+  environment:
+    DB_DIALECT: 'mysql'
+    DB_NAME:  ${env:RDS_DATABASE}
+    DB_USERNAME: ${env:RDS_USERNAME}
+    DB_PASSWORD: ${env:RDS_PASSWORD}
+    DB_HOST: ${env:RDS_HOSTNAME}
+    DB_PORT: ${env:RDS_PORT}
 
 # you can overwrite defaults here
 #  stage: dev
@@ -60,6 +69,10 @@ provider:
 functions:
   hello:
     handler: handler.hello
+    events:
+      - http:
+          path: hello
+          method: get
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
