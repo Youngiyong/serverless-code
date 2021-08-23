@@ -2,6 +2,15 @@ service: serverless-typescript
 plugins:
   - serverless-plugin-typescript
   - serverless-offline
+  - serverless-plugin-warmup
+custom:
+  warmup:
+    default:
+      enabled: true # Whether to warm up functions by default or not
+      folderName: '.warmup' # Name of the folder created for the generated warmup 
+      events:
+        - schedule: cron(0/5 0-1 ? * MON-FRI *)
+      concurrency: 5
 
 provider:
   name: aws
@@ -16,3 +25,10 @@ functions:
       - http:
           path: hello
           method: get
+    warmup:
+      default:
+        clientContext:
+          source: different-source-only-for-this-lambda
+        payload:
+          source: different-source-only-for-this-lambda
+        concurrency: 5

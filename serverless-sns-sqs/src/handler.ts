@@ -5,14 +5,21 @@ interface HelloResponse {
   body: string;
 }
 
+
 const hello: Handler = async (event: any, context: Context) => {
-  const response: HelloResponse = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: "Hello World!"
-    })
-  };
-  return response;
+  if (event.source === 'serverless-plugin-warmup') {
+    console.log('WarmUp - Lambda is warm!');
+    return 'Lambda is warm!';
+  } else {
+    const response: HelloResponse = {
+      statusCode: 200,
+      body: JSON.stringify({
+        message: "Hello World!"
+      })
+    };
+    return response;
+  }
+
 };
 
 
