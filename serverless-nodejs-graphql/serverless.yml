@@ -1,9 +1,35 @@
 # serverless.yml
 
 service: apollo-lambda
+
+frameworkVersion: "2"
+
 provider:
   name: aws
   runtime: nodejs14.x
+  iam:
+    role:
+      name: graphql-iam
+      # path:
+      statements:
+        - Effect: Allow
+          Action:
+            - "sns:*"
+          Resource: "*"
+        - Effect: Allow
+          Action:
+            - "s3:*"
+          Resource: "*"
+        # api.doc will call apigateway api
+        - Effect: Allow
+          Action:
+            - "apigateway:*"
+          Resource: "*"
+        - Effect: Allow
+          Action:
+            - "lambda:*"
+          Resource:
+            - "*"
 functions:
   graphql:
     # this is formatted as <FILENAME>.<HANDLER>

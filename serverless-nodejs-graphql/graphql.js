@@ -1,5 +1,3 @@
-// graphql.js
-
 const { ApolloServer, gql } = require('apollo-server-lambda');
 
 // Construct a schema, using GraphQL schema language
@@ -16,6 +14,16 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: ({ event, context, express }) => ({
+    headers: event.headers,
+    functionName: context.functionName,
+    event,
+    context,
+    expressRequest: express.req,
+  }),
+});
 
 exports.graphqlHandler = server.createHandler();
