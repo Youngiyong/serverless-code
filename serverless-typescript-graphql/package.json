@@ -1,0 +1,28 @@
+{
+  "name": "serverless-graphql-typescript-starter",
+  "version": "1.1.0",
+  "description": "A GraphQL Node.js starter for the Serverless Framework with async/await and unit test support",
+  "main": "handler.js",
+  "scripts": {
+    "offline": "serverless offline start",
+    "watch": "tsc -w",
+    "deploy": "sls deploy",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": "12.x"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.64",
+    "@types/jest": "^26.0.14",
+    "serverless-bundle": "3.2.1",
+    "serverless-dotenv-plugin": "^2.1.1",
+    "serverless-offline": "^6.8.0"
+  },
+  "dependencies": {
+    "apollo-server-lambda": "^2.16.0",
+    "graphql": "^14.5.8"
+  }
+}
