@@ -2,5 +2,3 @@
 
 https://www.notion.so/Serverless-7ca9adeeefb04bb4a4680e79297ae743
 
-
-#serverless-sns-sqs
