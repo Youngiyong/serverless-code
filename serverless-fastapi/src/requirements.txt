@@ -1,0 +1,9 @@
+fastapi==0.68.1
+uvicorn==0.15.0
+mangum==0.11.0
+
+
+
+
+
+

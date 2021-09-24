@@ -1,0 +1,18 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+
+.build
+dist
+
+# Python directories
+venv
+.idea
+.DS_Store
+__pycache__
+.env
+.env.prod
+.env.dev

@@ -1,0 +1,8 @@
+{
+    "name": "daangn-app",
+    "version": "1.0.0",
+    "author": "youn9354@naver.com",
+    "dependencies": {
+        "serverless-python-requirements": "^5.0.1"
+    }
+}
